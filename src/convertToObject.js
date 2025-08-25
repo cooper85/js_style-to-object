@@ -6,7 +6,7 @@
  */
 function convertToObject(stylesString) {
   return stylesString
-    .split(';')
+    .split('\n')
     .map(decl => decl.trim())
     .filter(decl => decl.includes(':'))
     .reduce((acc, decl) => {
