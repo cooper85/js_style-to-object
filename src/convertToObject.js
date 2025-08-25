@@ -6,11 +6,11 @@
  */
 function convertToObject(stylesString) {
   return stylesString
-    .split('\n')
-    .filter(line => line.trim() && line.includes(':'))
-    .reduce((acc, line) => {
-      const [property, ...valueParts]
-        = line.replace(/;$/, '').split(':');
+    .split(';')
+    .map(decl => decl.trim())
+    .filter(decl => decl.includes(':'))
+    .reduce((acc, decl) => {
+      const [property, ...valueParts] = decl.split(':');
       acc[property.trim()] = valueParts.join(':').trim();
       return acc;
     }, {});
